@@ -1,0 +1,13 @@
+<form [formGroup]="groupForm">
+    <label for="name"></label>
+    <input type="text" formControlName="name">
+</form>
+
+<ul>
+    <li *ngFor="let group of groups">{{ group.classgroup }}</li>
+</ul>
+
+<p>groups works!</p>
+
+<button (click)="logout()" class="btn btn-success">Kilépés</button>
+

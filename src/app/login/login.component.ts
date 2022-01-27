@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -36,8 +38,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('currentUser', 
         JSON.stringify({token: res.data.token, name: res.data.name})
         );
-        
+        this.router.navigate(['groups']);
 
+      }else {
+        alert('Hiba! A belépés sikertelen!')
       }
     })
 
